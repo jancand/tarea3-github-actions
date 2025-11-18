@@ -1,0 +1,20 @@
+name: Comprobar archivo en cada push
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  check_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Dar permisos al script
+        run: chmod +x check.sh
+
+      - name: Ejecutar comprobación del archivo
+        run: ./check.sh
+
